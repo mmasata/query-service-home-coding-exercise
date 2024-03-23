@@ -1,24 +1,22 @@
-- [Task 2 Solution](#task-2-solution)
-  * [Domain model](#domain-model)
-    + [Room entity](#room-entity)
-    + [User entity](#user-entity)
-    + [Reservation entity](#reservation-entity)
-    + [Discount entity](#discount-entity)
-    + [Summary](#summary)
+- [Domain model](#domain-model)
+    * [Room entity](#room-entity)
+    * [User entity](#user-entity)
+    * [Reservation entity](#reservation-entity)
+    * [Discount entity](#discount-entity)
+    * [Summary](#summary)
 
-# Task 2 Solution
+# Domain model
 
-## Domain model
-
-The domain model was created in draw.io. The [draw.io file](hotel_reservation_system.drawio) is also attached, from which you
+The domain model was created in [draw.io](https://draw.io/). The [draw.io file](hotel_reservation_system.drawio) is also
+attached, from which you
 can open the project directly in the application.
 
 The domain model was designed in such a way that it relates only to rooms, it does not address what hotel and location
-the room is in.
+the room is in. Also, when it comes to money, I only work with a numerical value without defining a specific currency.
 
 ![domain model image](hotel_reservation_system.drawio.png "Domain model of simple reservation system").
 
-### Room entity
+## Room entity
 
 According to the specifications, there should be different types of rooms. Since the configuration of a room can be very
 variable, it did not seem appropriate to sort the rooms into several types.
@@ -29,7 +27,7 @@ room, the user will be able to nicely filter his room to his preferences.
 
 A room may have more than one reservation, but only one reservation valid for a given time period.
 
-### User entity
+## User entity
 
 The reservation must be created by someone (the customer), so the User entity was created. The entity is created in the
 most minimalistic form possible given the task.
@@ -40,7 +38,7 @@ If we were to implement a real reservation system, we would have to consider oth
 - there can be more types of users (for example customer, admin, or some hotel employee etc...)
 - the user wants to store his payment card to simplify the payment process
 
-### Reservation entity
+## Reservation entity
 
 A reservation defines that the customer has booked a given room within a time range. It also defines the total price for
 the reservation (number_of_nights * price_per_night - discount).
@@ -56,7 +54,7 @@ The reservation can then be in several states
 - CANCELLED: The customer has cancelled their reservation
 - EXPIRED: The customer has booked but has not paid on time
 
-### Discount entity
+## Discount entity
 
 Although this wasn't in the assignment, I wanted to expand the assignment slightly.
 
@@ -66,7 +64,7 @@ range of validity over a period of time.
 A room can have multiple active discounts at any given time (but also may not have any), and a discount can be applied
 to multiple rooms.
 
-### Summary
+## Summary
 
 This domain model meets all requirements.
 
