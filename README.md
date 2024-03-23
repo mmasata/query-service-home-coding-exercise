@@ -37,3 +37,8 @@ stream of data:
 We have one machine that has enough disk space but limited
 memory. Write a design document to describe the system
 architecture and data structures as building blocks.
+
+
+# Solution
+
+## [Task 2](task2/README.md)
