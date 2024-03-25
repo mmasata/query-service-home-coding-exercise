@@ -7,4 +7,6 @@ public interface List<T> {
     T pop();
 
     void insertAfter(T o, T after);
+
+    int size();
 }

@@ -1,4 +1,4 @@
-package com.mmasata.utils.exception;
+package com.mmasata.exception;
 
 public class RemoveFromEmptyListException extends RuntimeException {
 

@@ -1,8 +1,8 @@
 package com.mmasata.utils;
 
-import com.mmasata.utils.exception.NullValueException;
-import com.mmasata.utils.exception.RemoveFromEmptyListException;
-import com.mmasata.utils.exception.ValueNotFoundException;
+import com.mmasata.exception.NullValueException;
+import com.mmasata.exception.RemoveFromEmptyListException;
+import com.mmasata.exception.ValueNotFoundException;
 
 public class LinkedList<T> implements List<T> {
 
@@ -96,6 +96,30 @@ public class LinkedList<T> implements List<T> {
         Node<T> oldNext = current.getNext();
         current.setNext(newNode);
         newNode.setNext(oldNext);
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        sb.append("[");
+
+        var current = head;
+        while (current != null) {
+            if (current != head) {
+                sb.append(", ");
+            }
+
+            sb.append(current.getValue());
+            current = current.getNext();
+        }
+
+        sb.append("]");
+        return sb.toString();
     }
 
 }
