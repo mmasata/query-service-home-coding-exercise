@@ -1,0 +1,123 @@
+_type: export
+__export_format: 4
+__export_date: 2024-03-25T19:34:31.645Z
+__export_source: insomnia.desktop.app:v2022.7.0
+resources:
+  - _id: req_adac8d15ab78404fac2f8c200be208a9
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1711393635096
+    created: 1711391655272
+    url: http://localhost:4567/list
+    name: show list
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1711391655272
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    parentId: null
+    modified: 1711395196340
+    created: 1672429242704
+    name: Thread Safety Linked List
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_58069d65d07f4ac0933f1ac06c260941
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1711395149006
+    created: 1705340900320
+    url: http://localhost:4567/list/push/exampleValue
+    name: push
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1705340900320
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4eaaca1486b44695ae001da63ad70a5c
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1711393737245
+    created: 1711393717157
+    url: http://localhost:4567/list/pop
+    name: pop
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1705146897178.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_abccff3558064fdb9f47393aed40e956
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1711395138409
+    created: 1711394057321
+    url: http://localhost:4567/list/insertAfter/newValueToAdd/afterValue
+    name: insertAfter
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1683906303076.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_1c2476fc05130683faae6af7bcaed471dff75ccd
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1704561481495
+    created: 1672429242710
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: {}
+    color: null
+    isPrivate: false
+    metaSortKey: 1672429242710
+    _type: environment
+  - _id: jar_1c2476fc05130683faae6af7bcaed471dff75ccd
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1672429242712
+    created: 1672429242712
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_07c522be00fc408097db35ff9f4ba6d8
+    parentId: wrk_897ee5abd18c4f209bf2646757f4ad8b
+    modified: 1672429242706
+    created: 1672429242706
+    fileName: BSY bonus
+    contents: ""
+    contentType: yaml
+    _type: api_spec
