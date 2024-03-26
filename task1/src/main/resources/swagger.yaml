@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: Thread safety linked list
+  version: 1.0.0
+servers:
+  - url: http://localhost:4567
+    description: Local
+paths:
+  /list:
+    get:
+      operationId: showList
+      description: Prints the current form of the Linked list.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+  /list/insertAfter/{o}/{after}:
+    put:
+      operationId: insertAfter
+      parameters:
+        - in: path
+          description: New value to add to linked list
+          name: o
+          required: true
+          schema:
+            type: string
+        - in: path
+          description: The search value, after which it adds o
+          name: after
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '400':
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /list/pop:
+    put:
+      operationId: pop
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '400':
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /list/push/{value}:
+    put:
+      operationId: push
+      parameters:
+        - in: path
+          description: New value to add to end of linked list
+          name: value
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '400':
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Message:
+      properties:
+        message:
+          type: string
+    Error:
+      properties:
+        error:
+          type: string
