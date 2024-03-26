@@ -4,14 +4,26 @@ import com.mmasata.exception.NullValueException;
 import com.mmasata.exception.RemoveFromEmptyListException;
 import com.mmasata.exception.ValueNotFoundException;
 
+/**
+ * LinkedList is a class that implements the List interface. It represents a linked list data structure
+ * where elements are stored in individual nodes that are connected by references.
+ *
+ * @param <T> the type of elements stored in the linked list
+ */
 public class LinkedList<T> implements List<T> {
 
     private Node<T> head = null;
     private Node<T> tail = null;
     private int size = 0;
 
+    /**
+     * Adds a new element to the end of the list.
+     *
+     * @param t the element to be added to the list
+     * @throws NullValueException if the provided element is null
+     */
     @Override
-    public void push(T t) {
+    public synchronized void push(T t) {
         if (t == null) {
             throw new NullValueException("Cannot push null value to list");
         }
@@ -21,7 +33,6 @@ public class LinkedList<T> implements List<T> {
         //push first element
         if (head == null) {
             head = tail = newNode;
-
         }
         //push another element
         else {
@@ -32,8 +43,14 @@ public class LinkedList<T> implements List<T> {
         size++;
     }
 
+    /**
+     * Removes and returns the last element in the list.
+     *
+     * @return the last element in the list
+     * @throws RemoveFromEmptyListException if the list is empty
+     */
     @Override
-    public T pop() {
+    public synchronized T pop() {
         // nothing to pop
         if (head == null) {
             throw new RemoveFromEmptyListException("Cannot pop from already empty list");
@@ -61,14 +78,22 @@ public class LinkedList<T> implements List<T> {
         return oldTail.getValue();
     }
 
+    /**
+     * Inserts a new element after a specified element in the LinkedList.
+     *
+     * @param o     the element to be inserted
+     * @param after the element after which the new element should be inserted
+     * @throws NullValueException     if the provided element is null
+     * @throws ValueNotFoundException if the specified element is not found in the LinkedList
+     */
     @Override
-    public void insertAfter(T o, T after) {
+    public synchronized void insertAfter(T o, T after) {
 
         if (o == null) {
-            throw new NullValueException("Cannot insert new value to list");
+            throw new NullValueException("Cannot insert null value to list");
         }
 
-        if (after == null) {
+        if (after == null || head == null) {
             throw new ValueNotFoundException("Cannot find the value for which we want to add next value");
         }
 
@@ -82,29 +107,36 @@ public class LinkedList<T> implements List<T> {
             return;
         }
 
-        //add after some value in linked list
+        //search for value in LinkedList
         Node<T> current = head;
         while (current != null && !current.getValue().equals(after)) {
             current = current.getNext();
         }
 
+        // value is not in LinkedList
         if (current == null) {
             throw new ValueNotFoundException("Cannot find the value for which we want to add next value");
         }
 
+        //add new value after found value
         size++;
         Node<T> oldNext = current.getNext();
         current.setNext(newNode);
         newNode.setNext(oldNext);
     }
 
+    /**
+     * Returns the size of the LinkedList.
+     *
+     * @return the number of elements in the LinkedList
+     */
     @Override
-    public int size() {
+    public synchronized int size() {
         return size;
     }
 
     @Override
-    public String toString() {
+    public synchronized String toString() {
         var sb = new StringBuilder();
         sb.append("[");
 
