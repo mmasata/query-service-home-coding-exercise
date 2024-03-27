@@ -56,7 +56,6 @@ public class LinkedList<T> implements List<T> {
             throw new RemoveFromEmptyListException("Cannot pop from already empty list");
         }
 
-        Node<T> newTail = head;
         Node<T> oldTail = tail;
 
         // pop head
@@ -66,11 +65,7 @@ public class LinkedList<T> implements List<T> {
             return oldTail.getValue();
         }
 
-        // pop tail
-        while (newTail.getNext() != tail) {
-            newTail = newTail.getNext();
-        }
-
+        Node<T> newTail = findNewTail();
         newTail.setNext(null);
         tail = newTail;
         size--;
@@ -107,12 +102,7 @@ public class LinkedList<T> implements List<T> {
             return;
         }
 
-        //search for value in LinkedList
-        Node<T> current = head;
-        while (current != null && !current.getValue().equals(after)) {
-            current = current.getNext();
-        }
-
+        Node<T> current = findFirstNodeByValue(after);
         // value is not in LinkedList
         if (current == null) {
             throw new ValueNotFoundException("Cannot find the value for which we want to add next value");
@@ -152,6 +142,22 @@ public class LinkedList<T> implements List<T> {
 
         sb.append("]");
         return sb.toString();
+    }
+
+    private Node<T> findNewTail() {
+        Node<T> newTail = head;
+        while (newTail.getNext() != tail) {
+            newTail = newTail.getNext();
+        }
+        return newTail;
+    }
+
+    private Node<T> findFirstNodeByValue(T value) {
+        Node<T> current = head;
+        while (current != null && !current.getValue().equals(value)) {
+            current = current.getNext();
+        }
+        return current;
     }
 
 }

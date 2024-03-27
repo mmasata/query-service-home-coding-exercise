@@ -4,6 +4,8 @@ import com.mmasata.exception.ValueNotFoundException;
 import com.mmasata.utils.LinkedList;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -78,6 +80,19 @@ class LinkedListTest {
         var list = new LinkedList();
         assertThrows(ValueNotFoundException.class, () -> list.insertAfter("value", null));
         assertThrows(ValueNotFoundException.class, () -> list.insertAfter("value", "nonExistingValue"));
+    }
+
+    @Test
+    void insertAfter() {
+        var operations = 100;
+        var headValue = "head";
+        var list = new LinkedList();
+        list.push(headValue);
+
+        for (int i = 0; i < operations; i++) {
+            list.insertAfter(UUID.randomUUID().toString(), headValue);
+        }
+        assertEquals(operations + 1, list.size());
     }
 
 }
