@@ -41,5 +41,6 @@ architecture and data structures as building blocks.
 
 # Solution
 
+## [Task 1](task1)
 ## [Task 2](task2/README.md)
 ## [Task 3](task3/README.md)
